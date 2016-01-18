@@ -15,6 +15,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        for(int i = 0; i<3;i++){
+            for(int j = 0; j<3; j++){
+                ticked[i][j]=-1;
+            }
+        }
     }
 
     public void putCross(View v) {
@@ -31,13 +36,21 @@ public class MainActivity extends AppCompatActivity {
         int i = v.getId();
         // More useful, let's get the tag.
         String t = (String) v.getTag();
-        // If you want to put a cross on it.
         ImageButton vv = (ImageButton) v;
-        if(turn%2==0)
-            vv.setImageResource(R.drawable.cross);
-        else
-            vv.setImageResource(R.drawable.circle);
-        turn++;
+        char temp = t.charAt(0);
+        int row = Character.getNumericValue(temp);
+        temp = t.charAt(1);
+        int column = Character.getNumericValue(temp);
+        if(ticked[row][column]==-1) {
+            if (turn % 2 == 0) {
+                vv.setImageResource(R.drawable.cross);
+                ticked[row][column] = 1;
+            } else {
+                vv.setImageResource(R.drawable.circle);
+                ticked[row][column] = 0;
+            }
+            turn++;
+        }
     }
 
     public void newGame(View v){
@@ -60,6 +73,11 @@ public class MainActivity extends AppCompatActivity {
         b = (ImageButton) findViewById(R.id.imageButton22);
         b.setImageResource(R.drawable.blank);
         turn = 0;
+        for(int i = 0; i<3;i++){
+            for(int j = 0; j<3; j++){
+                ticked[i][j]=-1;
+            }
+        }
     }
 
 }
