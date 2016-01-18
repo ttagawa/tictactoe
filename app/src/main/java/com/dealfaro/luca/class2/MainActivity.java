@@ -50,6 +50,16 @@ public class MainActivity extends AppCompatActivity {
                 ticked[row][column] = 0;
             }
             turn++;
+            if(ticked[0][0]!=-1 && ticked[0][0]==ticked[1][1] && ticked[0][0]==ticked[2][2])
+                gameWin(v);
+            if(ticked[0][2]!=-1 && ticked[0][2]==ticked[1][1] && ticked [0][2]==ticked[2][0])
+                gameWin(v);
+            for(int j=0; j<3; j++) {
+                if (ticked[j][0] != -1 && ticked[j][0] == ticked[j][1] && ticked[j][0] == ticked[j][2])
+                    gameWin(v);
+                if (ticked[0][j] != -1 && ticked[0][j] == ticked[1][j] && ticked[0][j] == ticked[2][j])
+                    gameWin(v);
+            }
         }
     }
 
@@ -78,6 +88,13 @@ public class MainActivity extends AppCompatActivity {
                 ticked[i][j]=-1;
             }
         }
+        TextView c = (TextView) findViewById(R.id.wonView);
+        c.setVisibility(View.INVISIBLE);
+    }
+
+    public void gameWin(View v){
+        TextView c = (TextView) findViewById(R.id.wonView);
+        c.setVisibility(View.VISIBLE);
     }
 
 }
