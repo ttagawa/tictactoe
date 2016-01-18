@@ -4,4 +4,6 @@
     <string name="hello_in_latin">Salve</string>
     <string name="prompt_text">Use this greeting</string>
     <string name="youwon">You won!</string>
+    <string name="NewGame">New Game</string>
+    <string name="gameSquare">game square</string>
 </resources>

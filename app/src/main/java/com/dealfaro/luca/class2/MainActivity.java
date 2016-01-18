@@ -8,6 +8,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    int turn = 0;
+    int[][] ticked = new int[3][3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +33,33 @@ public class MainActivity extends AppCompatActivity {
         String t = (String) v.getTag();
         // If you want to put a cross on it.
         ImageButton vv = (ImageButton) v;
-        vv.setImageResource(R.drawable.cross);
+        if(turn%2==0)
+            vv.setImageResource(R.drawable.cross);
+        else
+            vv.setImageResource(R.drawable.circle);
+        turn++;
+    }
 
+    public void newGame(View v){
+        ImageButton b = (ImageButton) findViewById(R.id.imageButton00);
+        b.setImageResource(R.drawable.blank);
+        b = (ImageButton) findViewById(R.id.imageButton01);
+        b.setImageResource(R.drawable.blank);
+        b = (ImageButton) findViewById(R.id.imageButton02);
+        b.setImageResource(R.drawable.blank);
+        b = (ImageButton) findViewById(R.id.imageButton10);
+        b.setImageResource(R.drawable.blank);
+        b = (ImageButton) findViewById(R.id.imageButton11);
+        b.setImageResource(R.drawable.blank);
+        b = (ImageButton) findViewById(R.id.imageButton12);
+        b.setImageResource(R.drawable.blank);
+        b = (ImageButton) findViewById(R.id.imageButton20);
+        b.setImageResource(R.drawable.blank);
+        b = (ImageButton) findViewById(R.id.imageButton21);
+        b.setImageResource(R.drawable.blank);
+        b = (ImageButton) findViewById(R.id.imageButton22);
+        b.setImageResource(R.drawable.blank);
+        turn = 0;
     }
 
 }
