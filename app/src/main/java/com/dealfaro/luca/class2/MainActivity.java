@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         // More useful, let's get the tag.
         String t = (String) v.getTag();
         ImageButton vv = (ImageButton) v;
+        TextView c = (TextView) findViewById(R.id.wonView);
         char temp = t.charAt(0);
         int row = Character.getNumericValue(temp);
         temp = t.charAt(1);
@@ -50,15 +51,44 @@ public class MainActivity extends AppCompatActivity {
                 ticked[row][column] = 0;
             }
             turn++;
-            if(ticked[0][0]!=-1 && ticked[0][0]==ticked[1][1] && ticked[0][0]==ticked[2][2])
+            if(ticked[0][0]!=-1 && ticked[0][0]==ticked[1][1] && ticked[0][0]==ticked[2][2]) {
+                if(ticked[0][0]==0)
+                    c.setText("O won!");
+                else
+                    c. setText("X won!");
                 gameWin(v);
-            if(ticked[0][2]!=-1 && ticked[0][2]==ticked[1][1] && ticked [0][2]==ticked[2][0])
+                turn=-1;
+            }
+            if(ticked[0][2]!=-1 && ticked[0][2]==ticked[1][1] && ticked [0][2]==ticked[2][0]) {
+                if(ticked[0][2]==0)
+                    c.setText("O won!");
+                else
+                    c. setText("X won!");
                 gameWin(v);
+                turn=-1;
+            }
             for(int j=0; j<3; j++) {
-                if (ticked[j][0] != -1 && ticked[j][0] == ticked[j][1] && ticked[j][0] == ticked[j][2])
+                if (ticked[j][0] != -1 && ticked[j][0] == ticked[j][1] && ticked[j][0] == ticked[j][2]) {
+                    if(ticked[j][0]==0)
+                        c.setText("O won!");
+                    else
+                        c. setText("X won!");
                     gameWin(v);
-                if (ticked[0][j] != -1 && ticked[0][j] == ticked[1][j] && ticked[0][j] == ticked[2][j])
+                    turn=-1;
+
+                }
+                if (ticked[0][j] != -1 && ticked[0][j] == ticked[1][j] && ticked[0][j] == ticked[2][j]) {
+                    if(ticked[0][j]==0)
+                        c.setText("O won!");
+                    else
+                        c. setText("X won!");
                     gameWin(v);
+                    turn=-1;
+                }
+                if(turn == 9){
+                    c.setText("Tie");
+                    gameWin(v);
+                }
             }
         }
     }
@@ -66,22 +96,31 @@ public class MainActivity extends AppCompatActivity {
     public void newGame(View v){
         ImageButton b = (ImageButton) findViewById(R.id.imageButton00);
         b.setImageResource(R.drawable.blank);
+        b.setEnabled(true);
         b = (ImageButton) findViewById(R.id.imageButton01);
         b.setImageResource(R.drawable.blank);
+        b.setEnabled(true);
         b = (ImageButton) findViewById(R.id.imageButton02);
         b.setImageResource(R.drawable.blank);
+        b.setEnabled(true);
         b = (ImageButton) findViewById(R.id.imageButton10);
         b.setImageResource(R.drawable.blank);
+        b.setEnabled(true);
         b = (ImageButton) findViewById(R.id.imageButton11);
         b.setImageResource(R.drawable.blank);
+        b.setEnabled(true);
         b = (ImageButton) findViewById(R.id.imageButton12);
         b.setImageResource(R.drawable.blank);
+        b.setEnabled(true);
         b = (ImageButton) findViewById(R.id.imageButton20);
         b.setImageResource(R.drawable.blank);
+        b.setEnabled(true);
         b = (ImageButton) findViewById(R.id.imageButton21);
         b.setImageResource(R.drawable.blank);
+        b.setEnabled(true);
         b = (ImageButton) findViewById(R.id.imageButton22);
         b.setImageResource(R.drawable.blank);
+        b.setEnabled(true);
         turn = 0;
         for(int i = 0; i<3;i++){
             for(int j = 0; j<3; j++){
@@ -95,6 +134,24 @@ public class MainActivity extends AppCompatActivity {
     public void gameWin(View v){
         TextView c = (TextView) findViewById(R.id.wonView);
         c.setVisibility(View.VISIBLE);
+        ImageButton b = (ImageButton) findViewById(R.id.imageButton00);
+        b.setEnabled(false);
+        b = (ImageButton) findViewById(R.id.imageButton01);
+        b.setEnabled(false);
+        b = (ImageButton) findViewById(R.id.imageButton02);
+        b.setEnabled(false);
+        b = (ImageButton) findViewById(R.id.imageButton10);
+        b.setEnabled(false);
+        b = (ImageButton) findViewById(R.id.imageButton11);
+        b.setEnabled(false);
+        b = (ImageButton) findViewById(R.id.imageButton12);
+        b.setEnabled(false);
+        b = (ImageButton) findViewById(R.id.imageButton20);
+        b.setEnabled(false);
+        b = (ImageButton) findViewById(R.id.imageButton21);
+        b.setEnabled(false);
+        b = (ImageButton) findViewById(R.id.imageButton22);
+        b.setEnabled(false);
     }
 
 }
