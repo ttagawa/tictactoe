@@ -32,7 +32,8 @@
                 android:scaleType="fitCenter"
                 android:onClick="clickBoard"
                 android:src="@drawable/blank"
-                android:contentDescription="@string/gameSquare" />
+                android:contentDescription="@string/gameSquare"
+                />
 
             <ImageButton
                 android:id="@+id/imageButton01"
